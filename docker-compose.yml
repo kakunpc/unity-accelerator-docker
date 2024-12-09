@@ -6,9 +6,10 @@ services:
     ports:
       - '80:80'
       - '443:443'
-      - '10080:10080'
+      - '5678:10080'
+      - '10443:10443'
     volumes:
-      - ./agent:/agent/
+      - accelerator-volume:/agent
     env_file:
       - ./.env
     restart: always
@@ -17,3 +18,7 @@ services:
       options:
         max-file: '1'
         max-size: 3m
+
+volumes:
+  accelerator-volume:
+    driver: "local"
